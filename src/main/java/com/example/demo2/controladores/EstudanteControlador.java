@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/estudantes")
 public class EstudanteControlador {
@@ -17,9 +19,15 @@ public class EstudanteControlador {
         repositorio = umRepositorio;
     }
 
-    @GetMapping("/busca/{matricula}")
+    @GetMapping("/{matricula}")
     public Estudante getEstudantePorMatricula(@PathVariable String matricula){
 
         return repositorio.buscarPorMatricula(matricula);
+    }
+
+    @GetMapping
+    public List<Estudante> getEstudantes(){
+
+        return repositorio.buscarTodos();
     }
 }
