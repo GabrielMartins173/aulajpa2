@@ -37,7 +37,16 @@ public class EstudanteRepositorioJPA implements EstudanteRepositorio {
 
     @Override
     public Estudante removerPorMatricula(String umaMatricula){
-        return null;
+
+        //obtenção de um estudante através de um objeto gerenciado pelo entity manager.
+        Estudante umEstudante = em.find(Estudante.class, umaMatricula);
+
+        //agora podemos remover o estudante que foi buscado anteriormente.
+
+        if(umEstudante != null) {
+            em.remove(umEstudante);
+        }
+        return umEstudante;
     }
 
     @Override
