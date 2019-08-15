@@ -16,11 +16,9 @@ public class EstudanteRepositorioJPA implements EstudanteRepositorio {
     @Override
     public List<Estudante> buscarTodos() {
 
-        //consulta realizada sob o modelo do objeto e não sob o modelo relacional do BD.
-        TypedQuery<Estudante> typedQuery = em.createQuery("select e from estudante e", Estudante.class );
+        TypedQuery<Estudante> typedQuery = em.createQuery("select e from Estudante e", Estudante.class);
 
         return typedQuery.getResultList();
-
     }
 
     @Override
