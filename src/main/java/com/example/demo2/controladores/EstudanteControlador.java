@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -43,7 +44,7 @@ public class EstudanteControlador {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void cadastrar(@RequestBody Estudante umEstudante){
+    public void cadastrar(@Valid @RequestBody Estudante umEstudante){
 
         repositorio.cadastrar(umEstudante);
     }
