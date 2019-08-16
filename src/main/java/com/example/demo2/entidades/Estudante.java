@@ -1,10 +1,8 @@
 package com.example.demo2.entidades;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.util.Collection;
 
 @Entity
 @Table(name= "estudantes")
@@ -25,6 +23,10 @@ public class Estudante {
     @Positive(message = "Idade deve ser um numero maior que zero.")
     @Column(nullable = false)
     private int idade;
+
+    //mapeamento feito cria uma nova tabela no banco onde guarda todos os telefones de um estudante relacionado.
+    @ElementCollection
+    private Collection<String> telefones;
 
     public String getMatricula() {
         return matricula;
@@ -53,5 +55,13 @@ public class Estudante {
     @Override
     public String toString() {
         return "[nome = " + getNome() + ", idade = " + getIdade() + ", matricula = " + getMatricula() + "]";
+    }
+
+    public Collection<String> getTelefones() {
+        return telefones;
+    }
+
+    public void setTelefones(Collection<String> telefones) {
+        this.telefones = telefones;
     }
 }
