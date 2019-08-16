@@ -52,5 +52,9 @@ public class EstudanteRepositorioJPA implements EstudanteRepositorio {
     @Override
     public void alterar(Estudante umEstudante) {
 
+        //atualiza o objeto em memoria e ao fim da execução do metodo, se as alterações forem bem sucedidas
+        //então irá persistir as modificações do objeto no banco de dados através de uma operação de update.
+        em.merge(umEstudante);
+
     }
 }

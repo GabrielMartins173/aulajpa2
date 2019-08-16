@@ -1,6 +1,7 @@
 package com.example.demo2.controladores;
 
 import com.example.demo2.entidades.Estudante;
+import com.example.demo2.excecoes.EstudanteNaoEncontradoException;
 import com.example.demo2.repositorios.EstudanteRepositorio;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -52,4 +53,22 @@ public class EstudanteControlador {
 
         return repositorio.removerPorMatricula(matricula);
     }
+
+    @PutMapping("/{matricula}")
+    public void alterar (@PathVariable String matricula,
+                         @RequestBody Estudante umEstudante){
+
+        Estudante estudante = repositorio.buscarPorMatricula(matricula);
+
+        if(estudante == null){
+
+            throw new EstudanteNaoEncontradoException("Id= " + matricula);
+        }
+
+        umEstudante.setMatricula(matricula);
+
+        repositorio.alterar(umEstudante);
+    }
+
+
 }
