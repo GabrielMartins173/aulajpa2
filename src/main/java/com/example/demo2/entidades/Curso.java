@@ -43,7 +43,7 @@ public class Curso {
 
     //modificacoes realizadas para garantir o bom funcionamento do set.
     // toda vez que formos usar set devemos sobrescrever o equals e o hashcode.
-    
+
     @Override
     public boolean equals(Object obj) {
 

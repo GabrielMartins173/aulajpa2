@@ -14,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/estudantes")
 @Transactional
+@CrossOrigin
 public class EstudanteControlador {
     private final EstudanteRepositorio repositorio;
 
