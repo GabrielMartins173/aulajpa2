@@ -7,8 +7,10 @@ import com.example.demo2.excecoes.EstudanteNaoEncontradoException;
 import com.example.demo2.repositorios.CursoRepositorio;
 import com.example.demo2.repositorios.EstudanteRepositorio;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class UniversidadeFachada {
 
     private EstudanteRepositorio estudantesRepo;
@@ -18,6 +20,7 @@ public class UniversidadeFachada {
         this.estudantesRepo = estudantesRepo;
         this.cursosRepo = cursosRepo;
     }
+
 
     public void matricular(String matriculaEstudante, String codigoCurso){
 
