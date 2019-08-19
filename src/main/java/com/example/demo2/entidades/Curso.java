@@ -38,4 +38,24 @@ public class Curso {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+
+
+    //modificacoes realizadas para garantir o bom funcionamento do set.
+    // toda vez que formos usar set devemos sobrescrever o equals e o hashcode.
+    
+    @Override
+    public boolean equals(Object obj) {
+
+        Curso outro = (Curso)obj;
+        return super.equals(obj)
+                && this.codigo.equals(outro.codigo)
+                && this.nome.equals(outro.nome);
+    }
+
+    @Override
+    public int hashCode() {
+        return codigo.hashCode();
+    }
 }
+
