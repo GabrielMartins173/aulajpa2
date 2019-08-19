@@ -6,7 +6,9 @@ import com.example.demo2.excecoes.CursoNaoEncontradoException;
 import com.example.demo2.excecoes.EstudanteNaoEncontradoException;
 import com.example.demo2.repositorios.CursoRepositorio;
 import com.example.demo2.repositorios.EstudanteRepositorio;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UniversidadeFachada {
 
     private EstudanteRepositorio estudantesRepo;
@@ -25,7 +27,7 @@ public class UniversidadeFachada {
             throw new EstudanteNaoEncontradoException("Numero de matricula invalido");
         }
 
-        Curso curso = new cursosRepo.buscarPorCodigo(codigoCurso);
+        Curso curso = cursosRepo.buscarPorCodigo(codigoCurso);
 
         if(curso == null){
             throw new CursoNaoEncontradoException("Codigo de curso invalido");
