@@ -3,6 +3,7 @@ package com.example.demo2.entidades;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.util.Collection;
+import java.util.Set;
 
 @Entity
 @Table(name= "estudantes")
@@ -27,6 +28,9 @@ public class Estudante {
     //mapeamento feito cria uma nova tabela no banco onde guarda todos os telefones de um estudante relacionado.
     @ElementCollection
     private Collection<String> telefones;
+
+    @ManyToMany (fetch = FetchType.EAGER)
+    private Set <Curso> cursos;
 
     public String getMatricula() {
         return matricula;
@@ -64,4 +68,14 @@ public class Estudante {
     public void setTelefones(Collection<String> telefones) {
         this.telefones = telefones;
     }
+
+    public Set<Curso> getCursos() {
+        return cursos;
+    }
+
+    public void setCursos(Set<Curso> cursos) {
+        this.cursos = cursos;
+    }
+
+
 }

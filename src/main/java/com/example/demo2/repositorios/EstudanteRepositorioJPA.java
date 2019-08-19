@@ -16,6 +16,8 @@ public class EstudanteRepositorioJPA implements EstudanteRepositorio {
     @Override
     public List<Estudante> buscarTodos() {
 
+        //consulta realizada sob mais de uma tabela do banco, pois agora temos relacionamentos entre
+        // estudante e outras entidades na relação.
         TypedQuery<Estudante> typedQuery = em.createQuery("select e from Estudante e", Estudante.class);
 
         return typedQuery.getResultList();
