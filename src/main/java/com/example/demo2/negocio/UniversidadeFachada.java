@@ -1,6 +1,8 @@
 package com.example.demo2.negocio;
 
+import com.example.demo2.entidades.Curso;
 import com.example.demo2.entidades.Estudante;
+import com.example.demo2.excecoes.CursoNaoEncontradoException;
 import com.example.demo2.excecoes.EstudanteNaoEncontradoException;
 import com.example.demo2.repositorios.CursoRepositorio;
 import com.example.demo2.repositorios.EstudanteRepositorio;
@@ -23,6 +25,12 @@ public class UniversidadeFachada {
             throw new EstudanteNaoEncontradoException("Numero de matricula invalido");
         }
 
-        
+        Curso curso = new cursosRepo.buscarPorCodigo(codigoCurso);
+
+        if(curso == null){
+            throw new CursoNaoEncontradoException("Codigo de curso invalido");
+        }
+
+        estudante.getCursos().add(curso);
     }
 }

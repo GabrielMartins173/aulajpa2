@@ -7,4 +7,7 @@ import java.util.List;
 public interface CursoRepositorio {
 
     List<Curso> buscarTodos();
+    Curso buscarPorCodigo(String codigo);
 }
+
+

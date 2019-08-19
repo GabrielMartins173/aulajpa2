@@ -28,4 +28,9 @@ public class CursoRepositorioJPA implements CursoRepositorio{
 
 
     }
+
+    @Override
+    public Curso buscarPorCodigo(String codigo) {
+        return em.find(Curso.class, codigo);
+    }
 }
